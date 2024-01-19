@@ -64,7 +64,7 @@ export default {
     name: 'HomePage',
     data() {
         return {
-            csvUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRWF5N8fp7duynPm66AJuTJfT5r-rXcB1fqO1klXomU0ZK6I7h7Y8urPdX9vpJeLlUqAqbro6pfXfN1/pub?gid=0&single=true&output=csv',
+            csvUrl: '',
             students: [],
         };
     },

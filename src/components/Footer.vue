@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <p>&copy; 2023 Duong Hoai Bao</p>
+        <p>&copy; 2024</p>
     </footer>
 </template>
 
