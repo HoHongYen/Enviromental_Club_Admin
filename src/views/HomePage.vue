@@ -1,5 +1,19 @@
 <template>
     <main>
+        <!-- navbar begin -->
+        <div>
+            <button class="navbar-button">
+                <router-link class="navbar-router" to="/">
+                    Trang chủ
+                </router-link>
+            </button>
+            <button class="navbar-button">
+                <router-link class="navbar-router" to="/report">
+                    Xuất báo cáo
+                </router-link>
+            </button>
+        </div>
+        <!-- navbar end -->
 
         <h1 class="title">Cập nhật dữ liệu</h1>
 
@@ -7,8 +21,7 @@
             <input type="text" id="studentID" v-model="csvUrl" placeholder="Nhập csv url...">
         </div>
 
-        <button id="searchButton" @click="resetDatabase">
-            <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+        <button @click="resetDatabase">
             Cập nhật
         </button>
 
@@ -18,11 +31,10 @@
 
         <h1 class="title">Danh sách sinh viên</h1>
 
-        <!-- <div id="studentInfo" style="display: none"> -->
         <div class="studentInfo">
             <div class="student-activities">
                 <!-- Các hoạt động sinh viên đã tham gia sẽ được hiển thị ở đây -->
-                <table class="activity-table">
+                <table id="student-table" class="activity-table">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -38,13 +50,15 @@
                     <tbody>
                         <template v-for="(student, studentIdx) in  students" :key="student.id">
                             <tr v-for="(activity, activityIdx) in  student.activities" :key="activity.name">
-                                <td v-if="activityIdx == 0" :rowspan="student.activities.length">{{ studentIdx+1 }}</td>
+                                <td v-if="activityIdx == 0" :rowspan="student.activities.length">{{ studentIdx + 1 }}</td>
                                 <td v-if="activityIdx == 0" :rowspan="student.activities.length">{{ student.mssv }}</td>
                                 <td v-if="activityIdx == 0" :rowspan="student.activities.length">{{ student.name }}</td>
-                                <td v-if="activityIdx == 0" :rowspan="student.activities.length">{{ student.nganhkhoa }}</td>
+                                <td v-if="activityIdx == 0" :rowspan="student.activities.length">{{ student.nganhkhoa }}
+                                </td>
                                 <td>{{ activity.name }}</td>
                                 <td>{{ activity.diem }}</td>
-                                <td v-if="activityIdx == 0" :rowspan="student.activities.length">{{ totalScore(student.activities) }}</td>
+                                <td v-if="activityIdx == 0" :rowspan="student.activities.length">{{
+                                    totalScore(student.activities) }}</td>
                             </tr>
                         </template>
                     </tbody>
@@ -58,7 +72,7 @@
 
 import axios from 'axios';
 import { db } from '@/firebase';
-import { collection, setDoc, addDoc, query, where, onSnapshot, updateDoc, doc, deleteDoc, orderBy } from "firebase/firestore";
+import { collection, setDoc, onSnapshot, doc, deleteDoc } from "firebase/firestore";
 
 export default {
     name: 'HomePage',

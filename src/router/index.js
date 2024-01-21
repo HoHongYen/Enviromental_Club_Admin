@@ -6,6 +6,12 @@ const routes = [
         name: 'HomePage',
         component: () => import('@/views/HomePage.vue'),
         props: true
+    },
+    {
+        path: '/report',
+        name: 'ReportPage',
+        component: () => import('@/views/ReportPage.vue'),
+        props: true
     }
 ]
 

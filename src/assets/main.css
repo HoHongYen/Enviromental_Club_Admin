@@ -44,8 +44,21 @@ main {
 }
 
 .title {
-  color: #15d2e4;
-  margin-top: 30px;
+  /* color: #15d2e4; */
+  color: #D63484;
+  margin-top: 5px;
+}
+
+
+
+/* NavBar Styles */
+.navbar-button {
+  margin-right: 10px;
+}
+
+.navbar-router {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Search Bar Styles */
