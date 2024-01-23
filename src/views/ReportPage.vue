@@ -27,6 +27,7 @@
         </div>
 
         <h1 class="title">Danh sách sinh viên</h1>
+
         <div class="student-activities">
             <!-- Các hoạt động sinh viên đã tham gia sẽ được hiển thị ở đây -->
             <table id="student-table" class="activity-table">
@@ -64,18 +65,26 @@ export default {
     data() {
         return {
             students: [],
-        };
+        }
     },
     methods: {
         exportExcel() {
             $('#student-table').dataTable({
 
                 dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    ['10 dòng', '25 dòng', '50 dòng', 'Tất cả']
+                ],
                 buttons: [
+                    'pageLength',
                     {
                         extend: 'excelHtml5',
                         title: 'Enviromental_Club_Report',
-                        text: 'Xuất Excel'
+                        text: 'Xuất Excel',
+                        title: 'Enviromental_Club_Report',
+                        // title: 'HỘI SINH VIÊN TRƯỜNG ĐẠI HỌC CẦN THƠ',
+                        // messageTop: "DANH SÁCH ĐỀ NGHỊ XÁC NHẬN THÀNH TÍCH THAM GIA HOẠT ĐỘNG",
                         //Columns to export
                         //exportOptions: {
                         //     columns: [0, 1, 2, 3,4,5,6]
